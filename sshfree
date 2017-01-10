@@ -1,0 +1,7 @@
+OUTPUT="$(gpuonefree)"
+
+if [ !  -z  ${OUTPUT}  ]; then
+	ssh "${OUTPUT}"
+else
+	echo "Sorry ... No empty GPU!"
+fi

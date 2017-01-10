@@ -1,54 +1,34 @@
-`gpustat`
+`clustergpustat`
 =========
 
-[![pypi](https://img.shields.io/pypi/v/gpustat.svg?maxAge=86400)][pypi_gpustat]
 [![license](https://img.shields.io/github/license/wookayin/gpustat.svg?maxAge=86400)](LICENSE)
 
-Just *less* than nvidia-smi?
-
-![Screenshot: gpustat -cp](screenshot.png)
+Just nvidia-smi across the cluster
 
 Usage
 -----
 
-`$ gpustat`
-
-Options:
-
-* `--no-color`        : Suppress color (by default, color is enabled)
-* `-u`, `--show-user` : Display username of the process owner
-* `-c`, `--show-cmd`  : Display the process name
-* `-p`, `--show-pid`  : Display PID of the process
-
-### Tips
-
-- To periodically watch, try `watch --color -n1.0 gpustat` (built-in watch support will be added soon).
-- Running `nvidia-smi daemon` (root privilege required) will make the query much faster.
+1. `$ gpustat`
+    it lists all gpu statistics across the cluster
+2. `$ gpufree`
+    it lists all gpu free across the cluster
+3. `sshfree`
+    logins to a random node with a free gpu
 
 
 Quick Installation
 ------------------
 
-Install from [PyPI][pypi_gpustat]:
-
-```
-sudo pip install gpustat
-```
-
-To install the latest version (master branch) via pip:
-
-```
-pip install git+https://github.com/wookayin/gpustat.git@master
-```
-
-Alternatively, you can just download an *unstable* version of [gpustat.py][script_gitio] (or any [stable version][script_stable]) into somewhere in `PATH`, e.g. `~/.local/bin/`
+Just download [gpustat][script_gitio], and/or [gpufree][script_gitio], and/or [gpuonefree][script_gitio] and [sshfree][script_gitio] into somewhere in `PATH`, e.g. `~/.local/bin/`
 (when you do not have root privilege, for example):
 
 ```
-sudo wget https://git.io/gpustat.py -O /usr/local/bin/gpustat && sudo chmod +x /usr/local/bin/gpustat
+sudo wget https://git.io/gpustat -O /usr/local/bin/gpustat && sudo chmod +x /usr/local/bin/gpustat
+sudo wget https://git.io/gpufree -O /usr/local/bin/gpufree && sudo chmod +x /usr/local/bin/gpufree
+sudo wget https://git.io/gpuonefree -O /usr/local/bin/gpuonefree && sudo chmod +x /usr/local/bin/gpuonefree
+sudo wget https://git.io/sshfree -O /usr/local/bin/gpustat && sudo chmod +x /usr/local/bin/sshfree
 ```
 
-[pypi_gpustat]: https://pypi.python.org/pypi/gpustat
 [script_gitio]: https://git.io/gpustat.py
 [script_stable]: https://raw.githubusercontent.com/wookayin/gpustat/v0.2.0/gpustat.py
 
