@@ -11,6 +11,7 @@ from __future__ import print_function
 from subprocess import check_output, CalledProcessError
 from datetime import datetime
 from collections import OrderedDict, defaultdict
+from random import shuffle
 try:
     from cStringIO import StringIO
 except ImportError:
@@ -305,7 +306,11 @@ def print_gpustat(**args):
     '''
     Display the GPU query results into standard output.
     '''
-    machines = ['gpu-0-4', 'gpu-0-5', 'gpu-0-6', 'gpu-0-7', 'gpu-0-0', 'gpu-0-1', 'gpu-0-2', 'gpu-0-3']
+    new_machines = ['gpu-0-4', 'gpu-0-5', 'gpu-0-6', 'gpu-0-7']
+    old_machines = [ 'gpu-0-0', 'gpu-0-1', 'gpu-0-2', 'gpu-0-3']
+    shuffle(new_machines)
+    shuffle(old_machines)
+    machines = new_machines + old_machines
     for machine in machines:    
          try:
              gpu_stats = GPUStatCollection.new_query(machine)
